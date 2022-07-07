@@ -16,10 +16,7 @@ package me.experimental;
     
 */
 
-import org.bukkit.ChatColor;
-import org.bukkit.Color;
-import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
+import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -35,10 +32,10 @@ public class Main extends JavaPlugin {
 
     public void onEnable() {
 
-        registerHat();
-        registerShirt();
-        registerPants();
-        registerShoes();
+        Bukkit.addRecipe(registerHat());
+        Bukkit.addRecipe(registerShirt());
+        Bukkit.addRecipe(registerPants());
+        Bukkit.addRecipe(registerShoes());
         getLogger().info("Registered recipies");
 
     }
@@ -124,27 +121,31 @@ public class Main extends JavaPlugin {
      * Register Recipe Methods
      */
 
-    public void registerHat() {
+    public ShapedRecipe registerHat() {
         ShapedRecipe hat = new ShapedRecipe(new NamespacedKey(this, "sea-hat"), getHat());
         hat.shape("CCC", "C  C", "   ");
         hat.setIngredient('C', Material.CYAN_WOOL);
+        return hat;
     }
 
-    public void registerShirt() {
-        ShapedRecipe hat = new ShapedRecipe(new NamespacedKey(this, "sea-shirt"), getShirt());
-        hat.shape("C C", "CCC", "CCC");
-        hat.setIngredient('C', Material.CYAN_WOOL);
+    public ShapedRecipe registerShirt() {
+        ShapedRecipe shirt = new ShapedRecipe(new NamespacedKey(this, "sea-shirt"), getShirt());
+        shirt.shape("C C", "CCC", "CCC");
+        shirt.setIngredient('C', Material.CYAN_WOOL);
+        return shirt;
     }
 
-    public void registerPants() {
-        ShapedRecipe hat = new ShapedRecipe(new NamespacedKey(this, "sea-pants"), getPants());
-        hat.shape("CCC", "C C", "C C");
-        hat.setIngredient('C', Material.CYAN_WOOL);
+    public ShapedRecipe registerPants() {
+        ShapedRecipe pants = new ShapedRecipe(new NamespacedKey(this, "sea-pants"), getPants());
+        pants.shape("CCC", "C C", "C C");
+        pants.setIngredient('C', Material.CYAN_WOOL);
+        return pants;
     }
 
-    public void registerShoes() {
-        ShapedRecipe hat = new ShapedRecipe(new NamespacedKey(this, "sea-shoes"), getShoes());
-        hat.shape("   ", "C  C", "C C");
-        hat.setIngredient('C', Material.CYAN_WOOL);
+    public ShapedRecipe registerShoes() {
+        ShapedRecipe shoes = new ShapedRecipe(new NamespacedKey(this, "sea-shoes"), getShoes());
+        shoes.shape("   ", "C  C", "C C");
+        shoes.setIngredient('C', Material.CYAN_WOOL);
+        return shoes;
     }
 }
